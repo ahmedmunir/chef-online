@@ -25,3 +25,7 @@ inside **src/js/modals**, you need to provide your own app_id & app_key after cr
 
 ## Important Note:
 you can clone the project and run it locally through index.html file, it will keep getting information from API without any problem, but you will face a problem at displaying SVG items, because SVG elements will not run without server (local or remote), so you need to install dependancies & devdepenancies to run local server to display SVG elements.
+
+## To do in the Future:
+Errors when enter wrong word, or server didn't respond.  
+add Likes modal.
