@@ -16,7 +16,9 @@ export default class Recipe {
         const proxy = "https://cors-anywhere.herokuapp.com/";
         const units = ["lb", "tsp", "cup","cups", "x", "oz", "pinch", 
                         "teaspoons", "ounces", "teaspoon", "tbsp", 
-                        "tbsp.", "tsp.", "tablespoon", "ounce"];
+                        "tbsp.", "tsp.", "tablespoon", "ounce",
+                        "Cup", "Cups", "cup", "cups", "Tablespoons",
+                        "Teaspoon"];
         try {
 
             // getting information about specific recipe from API
