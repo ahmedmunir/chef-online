@@ -62,6 +62,7 @@ export default class Recipe {
                 ingredients_list_array.push(ingredients_list.slice());
             });
 
+            ingredients.api = this.ID;
             ingredients.image = recipe.data[0].image;
             ingredients.label = recipe.data[0].label;
             ingredients.yield = recipe.data[0].yield;

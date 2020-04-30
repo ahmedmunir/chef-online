@@ -22,7 +22,7 @@ export const recipeDetailsView = (ingredients) => {
 
     elements.recipe.insertAdjacentHTML('afterbegin', 
     `
-                <figure class="recipe__fig">
+                <figure class="recipe__fig" id=${ingredients.api}>
                     <img src="${ingredients.image}" alt="$recipe.label" class="recipe__img">
                     <h1 class="recipe__title">
                         <span>${ingredients.label}</span>
@@ -107,7 +107,3 @@ export const updateIngredients = (updateIngredients) => {
     });
 }
 
-const newRecipeEquation = (peopleNumber, current_recipe_value, ref) => {
-    return Math.ceil((peopleNumber * current_recipe_value) / ref);
-    
-}

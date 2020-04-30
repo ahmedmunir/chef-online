@@ -6,7 +6,7 @@ export const elements = {
     results: document.querySelector('.results'),
     results__pages : document.querySelector('.results__pages'),
     recipe: document.querySelector('.recipe'),
-    shopping__List: document.querySelector('.shopping__list')
+    shopping__List: document.querySelector('.shopping__list'),
 }
 
 // load spinner 

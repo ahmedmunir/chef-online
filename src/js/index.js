@@ -6,6 +6,7 @@ import Recipe from './models/Recipe';
 import * as recipeView from './views/recipeView';
 import {createShoppingList} from './models/ShoppingList';
 import * as shoppingListView from './views/shoppingListView';
+import Likes from './models/Likes';
 
 const state = {};
 
@@ -187,6 +188,32 @@ const controllerShoppingList = () => {
     shoppingListView.updateShoppingList(ShoppingList);
 }
 
+/************ Likes CONTROLLER ************/
+// add event listener when clicking on heart Symbol
+elements.recipe.addEventListener("click", e => {
+
+    //if heart symbol clicked to add recipe to my favourite list
+    if(e.target.classList[0] == "header__likes" || 
+       e.target.classList[0] == "recipe__love") {
+          LikesListController();
+      }
+})
+
+const LikesListController = () => {
+    // create new favourite recipe
+    let newLike;
+    newLike = new Likes(state.Recipe.result.api, state.Recipe.result.label, state.Recipe.result.source, state.Recipe.result.image);
+
+
+    // push that recipe to state to store it.
+    //check if Likes if empty or not
+    if(!state.likes){
+        state.likes = []
+    }
+    state.likes.push(newLike);
+    console.log(newLike);
+    console.log(state);
+}
 
 /*
 *** CASES that can be override
