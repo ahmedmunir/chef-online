@@ -88,6 +88,8 @@ elements.results.addEventListener("click", (e) => {
 //add event listeners when using + or - for servings or click heart symbol to add to favourite list
 elements.recipe.addEventListener('click', e => {
 
+    console.log(e.target.classList);
+
     //if heart symbol clicked to add recipe to my favourite list
     if(e.target.classList[0] == "header__likes" || 
        e.target.classList[0] == "recipe__love") {

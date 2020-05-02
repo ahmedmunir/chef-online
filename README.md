@@ -28,4 +28,5 @@ you can clone the project and run it locally through index.html file, it will ke
 
 ## To do in the Future:
 Errors when enter wrong word, or server didn't respond.  
-add Likes modal.
+Delete Liked recipe
+update how to display the amount of any unit.
