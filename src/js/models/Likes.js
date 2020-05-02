@@ -1,8 +1,11 @@
 export default class Likes {
-    constructor(ID, label, source, image) {
-        this.ID = ID;
-        this.label = label;
-        this.source = source;
-        this.image = image;
+    constructor() {
+        this.likes = [];
+    }
+    
+    addLike(ID, label, source, image) {
+        const Like = {ID, label, source, image};
+        this.likes.push(Like);
+        return Like;
     }
 }

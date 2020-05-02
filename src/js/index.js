@@ -7,6 +7,7 @@ import * as recipeView from './views/recipeView';
 import {createShoppingList} from './models/ShoppingList';
 import * as shoppingListView from './views/shoppingListView';
 import Likes from './models/Likes';
+import * as likesView from './views/likesView';
 
 const state = {};
 
@@ -84,32 +85,40 @@ elements.results.addEventListener("click", (e) => {
 
 
 
-//add event listeners when using + or - for servings
+//add event listeners when using + or - for servings or click heart symbol to add to favourite list
 elements.recipe.addEventListener('click', e => {
-    let symbolClass;
-    
-    //use if & elif for both svg & use tags
-    if(e.target.tagName == "svg"){
 
-        //get the symbol
-        symbolClass = e.target.firstElementChild.href.baseVal;
+    //if heart symbol clicked to add recipe to my favourite list
+    if(e.target.classList[0] == "header__likes" || 
+       e.target.classList[0] == "recipe__love") {
+           LikesListController();
+    } else {
 
-        //updating current state of recipe
-        state.Recipe.updateRecipe(symbolClass);
-        recipeView.updateIngredients(state.Recipe.result);
-    
-    } else if(e.target.tagName == "use") {
+        let symbolClass;
+        
+        //use if & elif for both svg & use tags
+        if(e.target.tagName == "svg"){
 
-        //get the symbol
-        symbolClass = e.target.href.baseVal;
+            //get the symbol
+            symbolClass = e.target.firstElementChild.href.baseVal;
 
-        //updating current state of recipe
-        state.Recipe.updateRecipe(symbolClass);
-        recipeView.updateIngredients(state.Recipe.result);
+            //updating current state of recipe
+            state.Recipe.updateRecipe(symbolClass);
+            recipeView.updateIngredients(state.Recipe.result);
+        
+        } else if(e.target.tagName == "use") {
 
-    // in case when clicking on Add to shopping List
-    } else if (e.target.innerText.toUpperCase() == "ADD TO SHOPPING LIST") {
-        controllerShoppingList();
+            //get the symbol
+            symbolClass = e.target.href.baseVal;
+
+            //updating current state of recipe
+            state.Recipe.updateRecipe(symbolClass);
+            recipeView.updateIngredients(state.Recipe.result);
+
+        // in case when clicking on Add to shopping List
+        } else if (e.target.innerText.toUpperCase() == "ADD TO SHOPPING LIST") {
+            controllerShoppingList();
+        }
     }
     
 })
@@ -189,30 +198,21 @@ const controllerShoppingList = () => {
 }
 
 /************ Likes CONTROLLER ************/
-// add event listener when clicking on heart Symbol
-elements.recipe.addEventListener("click", e => {
-
-    //if heart symbol clicked to add recipe to my favourite list
-    if(e.target.classList[0] == "header__likes" || 
-       e.target.classList[0] == "recipe__love") {
-          LikesListController();
-      }
-})
-
 const LikesListController = () => {
     // create new favourite recipe
-    let newLike;
-    newLike = new Likes(state.Recipe.result.api, state.Recipe.result.label, state.Recipe.result.source, state.Recipe.result.image);
+    let newLike, liked;
+    newLike = new Likes();
+    liked = newLike.addLike(state.Recipe.result.api, state.Recipe.result.label, state.Recipe.result.source, state.Recipe.result.image);
 
-
-    // push that recipe to state to store it.
-    //check if Likes if empty or not
-    if(!state.likes){
-        state.likes = []
+    //check whether item added to favourite list or not
+    if (!likesView.favouriteListChecker(elements.heart)) {
+        
+        //add liked recipe to favourite recipes using Heart symbol
+        likesView.displayLikes(liked);
     }
-    state.likes.push(newLike);
-    console.log(newLike);
-    console.log(state);
+
+    //change outline white heart with heart full of white.
+    likesView.whiteHeart(elements.heart);
 }
 
 /*
