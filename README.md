@@ -1,6 +1,7 @@
 # chef-online
-Help people to search over 1,000,000 recipes. Depending on Edamam API, you can surf for more than 1 million recipes.
-(https://ahmedmunir.github.io/chef-online/)
+Help people to search over 1,000,000 recipes. Depending on Edamam API, you can surf for more than 1 million recipes.  
+The project was build depending on **MVC pattern**.
+
 ## Technologies Used:
 -HTML/HTML5  
 -CSS/CSS3  
@@ -28,5 +29,8 @@ you can clone the project and run it locally through index.html file, it will ke
 
 ## To do in the Future:
 Errors when enter wrong word, or server didn't respond.  
-Delete Liked recipe
-update how to display the amount of any unit.
+Add Liked recipes to localstorage.  
+
+## Website Link:
+Happy meal:  
+(https://ahmedmunir.github.io/chef-online/)
